@@ -15,9 +15,9 @@ workflows:
     jobs:
       - aws-cli-create-bucket:
           context: AWS
-#      - aws-serverless/deploy:
-#          context: AWS
-#          name: deploy-production
-#          stack-name: hackathon-lambda-1
-#          template: ./template.yaml
-#          s3-bucket: travis-reed-hackisu-lambda-2-code
+      - aws-serverless/deploy:
+          context: AWS
+          name: deploy-production
+          stack-name: hackathon-lambda-1
+          template: ./template.yaml
+          s3-bucket: travis-reed-hackisu-lambda-2-code
