@@ -1,10 +1,10 @@
 version: 2.1
 orbs:
-  aws-cloudformation: orbss/aws-cloudformation@0.1.4
-jobs:
- create-stack:
-   aws-access-key-id: AKIATCMDCGTIHFV3EJPJ
-   aws-region: us-east-1
-   aws-secret-access-key: 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
-   stack-name: hackathon-lambda-1
-   template-file-path: lambda.yaml
+  aws-serverless: circleci/aws-serverless@1.0.1
+workflows:
+  deploy:
+    jobs:
+      - aws-serverless/deploy:
+          name: deploy-production
+          stack-name: hackathon-lambda-1
+          template: ./lambda.yaml
