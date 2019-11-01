@@ -11,10 +11,11 @@ jobs:
           profile-name: default
       - run: aws s3 mb s3://travis-reed-hackisu-lambda-2-code
 workflows:
+  create-bucket:
+    - aws-cli-create-bucket:
+        context: AWS
   deploy:
     jobs:
-      - aws-cli-create-bucket:
-          context: AWS
       - aws-serverless/deploy:
           context: AWS
           name: deploy-production
