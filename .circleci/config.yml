@@ -2,10 +2,10 @@ version: 2.1
 orbs:
   aws-serverless: circleci/aws-serverless@1.0.1
 workflows:
-  context: AWS
   deploy:
     jobs:
       - aws-serverless/deploy:
+          context: AWS
           name: deploy-production
           stack-name: hackathon-lambda-1
           template: ./lambda.yaml
