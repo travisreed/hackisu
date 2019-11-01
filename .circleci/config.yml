@@ -4,6 +4,12 @@ orbs:
 workflows:
   deploy:
     jobs:
+      - build:
+          context: AWS
+          docker:
+            - image: circleci/python
+          steps:
+            - run: aws s3 mb s3://travis-reed-hackisu-lambda-2-code
       - aws-serverless/deploy:
           context: AWS
           name: deploy-production
