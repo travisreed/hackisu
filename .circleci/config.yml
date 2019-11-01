@@ -8,5 +8,5 @@ workflows:
           context: AWS
           name: deploy-production
           stack-name: hackathon-lambda-1
-          template: ./lambda.yaml
+          template: ./template.yaml
           s3-bucket: lambda-code
