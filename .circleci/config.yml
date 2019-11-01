@@ -1,8 +1,10 @@
-version: 2
+version: 2.1
+orbs:
+  aws-cloudformation: orbss/aws-cloudformation@0.1.4
 jobs:
- build:
-   docker:
-     - image: circleci/ruby:2.4.1
-   steps:
-     - checkout
-     - run: echo "A first hello"
+ create-stack:
+   aws-access-key-id: AKIATCMDCGTIHFV3EJPJ
+   aws-region: us-east-1
+   aws-secret-access-key: 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
+   stack-name: hackathon-lambda-1
+   template-file-path: lambda.yaml
