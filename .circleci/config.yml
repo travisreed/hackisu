@@ -1,15 +1,20 @@
 version: 2.1
 orbs:
   aws-serverless: circleci/aws-serverless@1.0.1
+  aws-cli: circleci/aws-cli@0:1.16
+jobs:
+  aws-cli-create-bucket:
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          profile-name: default
+      - run: aws s3 mb s3://travis-reed-hackisu-lambda-2-code
 workflows:
   deploy:
     jobs:
-      - build:
+      - aws-cli-create-bucket:
           context: AWS
-          docker:
-            - image: circleci/python
-          steps:
-            - run: aws s3 mb s3://travis-reed-hackisu-lambda-2-code
       - aws-serverless/deploy:
           context: AWS
           name: deploy-production
